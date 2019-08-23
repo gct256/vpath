@@ -24,41 +24,41 @@ enum VpathType {
   OTHER_ROOT,
 }
 
-/** 仮想パスクラス */
+/** Virtual path class for node.js */
 export class Vpath {
-  /** 絶対パス */
+  /** Absolute path. */
   public readonly filePath: string;
 
-  /** ファイル名 */
+  /** File name. */
   public readonly basename: string;
 
-  /** 拡張子名（ピリオド含む） */
+  /** Extension name. (include dot) */
   public readonly extname: string;
 
-  /** 最上位かどうか */
+  /** Root directory flag. */
   public readonly isRoot: boolean;
 
-  /** ファイルかどうか */
+  /** Regular file flag. */
   public readonly isFile: boolean;
 
-  /** ディレクトリかどうか */
+  /** Directory flag. */
   public readonly isDirectory: boolean;
 
-  /** シンボリックリンクかどうか */
+  /** Symbolic link flag. */
   public readonly isSymbolicLink: boolean;
 
-  /** ファイル・ディレクトリ・シンボリックリンク以外かどうか */
+  /** Other file type flag. */
   public readonly isOtherFileType: boolean;
 
-  /* 種別 */
+  /* Internal path type. */
   private readonly vpathType: VpathType;
 
   /**
-   * コンストラクタ / 使わないこと
+   * private constructor
    *
-   * @param filePath ファイルパス
-   * @param vpathType 種別
-   * @param stats fs.statの結果
+   * @param filePath file path.
+   * @param vpathType internal path type.
+   * @param stats result of fs.stat or object.
    */
   private constructor(
     filePath: string,
@@ -78,9 +78,9 @@ export class Vpath {
   }
 
   /**
-   * 仮想パスオブジェクトを生成
+   * Create Vpath object.
    *
-   * @param filePath ファイルパス
+   * @param filePath file path.
    */
   public static async create(filePath: string): Promise<Vpath> {
     return Vpath.createVpath(filePath, VpathType.NORMAL);
@@ -94,7 +94,7 @@ export class Vpath {
   }
 
   /**
-   * 最上位の仮想パスオブジェクトを生成
+   * Create Vpath object of root directory.
    */
   public static async getRoot(): Promise<Vpath> {
     switch (process.platform) {
@@ -107,7 +107,7 @@ export class Vpath {
   }
 
   /**
-   * ホームディレクトリの仮想パスオブジェクトを生成
+   * Create Vpath object of user's home directory.
    */
   public static async getHome(): Promise<Vpath> {
     return Vpath.createVpath(os.homedir(), VpathType.NORMAL);
@@ -118,8 +118,7 @@ export class Vpath {
   }
 
   /**
-   * 親の仮想パスオブジェクトを生成
-   * ただし最上位の場合は自身を返す
+   * Create Vpath object of parent directory.
    */
   public async getParent(): Promise<Vpath> {
     if (this.isRoot) return this;
@@ -138,7 +137,7 @@ export class Vpath {
   }
 
   /**
-   * 子の仮想パスオブジェクトの配列を生成
+   * Create array of Vpath object of children.
    */
   public async getChildren(): Promise<Vpath[]> {
     switch (this.vpathType) {
@@ -171,7 +170,7 @@ export class Vpath {
   }
 
   /**
-   * 上位をたどる仮想パスオブジェクトの配列を生成
+   * Create array of Vpath object of route to root.
    */
   public async getRoute(): Promise<Vpath[]> {
     if (this.isRoot) return [this];
