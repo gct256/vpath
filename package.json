@@ -1,12 +1,14 @@
 {
-  "name": "package-name",
-  "version": "0.1.0",
+  "name": "@gct256/vpath",
+  "version": "0.0.1",
   "license": "MIT",
+  "description": "Virtual path object for node.js.",
   "scripts": {
     "watch": "rollup -c -w",
     "build": "NODE_ENV=production rollup -c",
     "test": "jest"
   },
+  "main": ".",
   "jest": {
     "testRegex": "/__tests__/(.*/)?test_.*\\.(tsx?|jsx?)$"
   },
