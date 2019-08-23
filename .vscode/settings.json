@@ -1,0 +1,88 @@
+{
+  //
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "editor.renderControlCharacters": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.rulers": [80, 120],
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+  "editor.useTabStops": true,
+  "editor.wordWrap": "on",
+  "editor.wordWrapColumn": 80,
+  "editor.wrappingIndent": "none",
+  //
+  "files.autoGuessEncoding": true,
+  "files.autoSave": "off",
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": true,
+    "dist/**/*.js": true,
+    "types": true,
+    "coverage": true,
+    ".rpt2_cache": true
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  //
+  "javascript.validate.enable": false,
+  //
+  "typescript.validate.enable": true,
+  //
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    { "language": "javascript", "autoFix": true },
+    { "language": "javascriptreact", "autoFix": true },
+    { "language": "typescript", "autoFix": true },
+    { "language": "typescriptreact", "autoFix": true }
+  ],
+  //
+  "prettier.eslintIntegration": false,
+  "prettier.tslintIntegration": false,
+  "prettier.disableLanguages": [
+    "vue",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  //
+  "highlight.regexFlags": "mgi",
+  "highlight.regexes": {
+    "^(\\+.*)": {
+      "filterFileRegex": ".*\\.snap",
+      "decorations": [
+        {
+          "overviewRulerColor": "#006600",
+          "backgroundColor": "#006600"
+        }
+      ]
+    },
+    "^(\\-.*)": {
+      "filterFileRegex": ".*\\.snap",
+      "decorations": [
+        {
+          "overviewRulerColor": "#660000",
+          "backgroundColor": "#660000"
+        }
+      ]
+    }
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
